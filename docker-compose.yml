@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+   ldap:
+     image: whw3/openldap:latest
+     ports:
+       - "389:389"
+     restart: always     
+     volumes:
+       - ./data/etc:/etc/ldap
+       - ./data/var:/var/lib/ldap
+     restart: always
+     environment:      
+        SLAPD_PASSWORD: mysecretpassword
+        SLAPD_DOMAIN: ldap.whw3.com
