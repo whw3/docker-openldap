@@ -1,11 +1,9 @@
-FROM debian:jessie
-
-MAINTAINER Christian Luginbühl <dinkel@pimprecords.com>
+FROM whw3/rpi-s6
 
 ENV OPENLDAP_VERSION 2.4.40
 ENV DEBUG_LEVEL 32768
 
-RUN apt-get update && \
+RUN apt-get update && apt-get upgrade && \
     DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
         slapd=${OPENLDAP_VERSION}* && \
     apt-get clean && \
@@ -21,6 +19,7 @@ EXPOSE 389
 
 VOLUME ["/etc/ldap", "/var/lib/ldap"]
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/init"]
 
 CMD ["sh", "-c", "slapd -d ${DEBUG_LEVEL} -u openldap -g openldap"]
+
