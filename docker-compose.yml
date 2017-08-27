@@ -7,8 +7,8 @@ services:
        - "389:389"
      restart: always     
      volumes:
-       - ./data/etc:/etc/ldap
-       - ./data/var:/var/lib/ldap
+       - ./data/etc/ldap:/etc/ldap
+       - ./data/var/ldap:/var/lib/ldap
      restart: always
      environment:      
         SLAPD_PASSWORD: mysecretpassword
