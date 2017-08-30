@@ -3,14 +3,12 @@ version: '3'
 services:
    ldap:
       image: whw3/openldap:latest
-      build:
-         context: .
-         dockerfile: Dockerfile
-     ports:
-       - "389:389"
-     volumes:
-       - ./data/etc/ldap:/etc/ldap
-       - ./data/var/ldap:/var/lib/ldap
-     environment:      
-        SLAPD_PASSWORD: mysecretpassword
-        SLAPD_DOMAIN: ldap.whw3.com
+      build: .
+      ports:
+      - "389:389"
+      volumes:
+      - ./data/etc/ldap:/etc/ldap
+      - ./data/var/ldap:/var/lib/ldap
+      environment:      
+         SLAPD_PASSWORD: mysecretpassword
+         SLAPD_DOMAIN: ldap.whw3.com
