@@ -2,7 +2,10 @@ version: '3'
 
 services:
    ldap:
-     image: whw3/openldap:latest
+      image: whw3/openldap:latest
+      build:
+         context: .
+         dockerfile: Dockerfile
      ports:
        - "389:389"
      volumes:
